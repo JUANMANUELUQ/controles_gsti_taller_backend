@@ -28,11 +28,4 @@ public class PublicController {
         return ResponseEntity.ok(new MessageDTO<>(false, token));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<MessageDTO<String>> registrarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) throws Exception{
-        String usuario=usuarioService.guardarUsuario(usuarioDTO);
-        FileLogger.log("Nuevo usuario registrado: "+usuario);
-        return ResponseEntity.ok(new MessageDTO<>(false, usuario));
-    }
-
 }

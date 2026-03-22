@@ -47,7 +47,7 @@ public class TokenFilter extends OncePerRequestFilter {
             boolean error = false;
             try {
                 if (requestURI.startsWith("/api/account")) {
-                    error = validarToken(token, Rol.EMPLOYEE) && validarToken(token, Rol.ADMIN);
+                    error = validarToken(token, Rol.ADMIN);
                 } else if (requestURI.startsWith("/api/admin")) {
                     error = validarToken(token, Rol.ADMIN);
                 }  else {

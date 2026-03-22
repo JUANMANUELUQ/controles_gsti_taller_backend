@@ -23,7 +23,7 @@ public class FileLogger {
 
         try (FileWriter fw = new FileWriter(LOG_PATH, true);
              PrintWriter pw = new PrintWriter(fw)) {
-
+            System.out.println(logCompleto);
             pw.println(logCompleto);
 
         } catch (IOException e) {
