@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  taller-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MONGODB_URI=mongodb+srv://juanmanuel200413_db_user:cacique@cluster0.8eq21hl.mongodb.net/logiTech
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

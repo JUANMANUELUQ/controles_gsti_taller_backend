@@ -1,0 +1,10 @@
+target/
+!target/taller-0.0.1-SNAPSHOT.jar
+*.log
+.mvn/
+.git
+.idea
+*.iml
+mvnw
+mvnw.cmd
+node_modules/
