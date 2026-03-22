@@ -1,0 +1,7 @@
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+EXPOSE 8080
+# This Dockerfile expects that you built the JAR locally with `./mvnw package`.
+# It copies the jar from the host `target/` folder into the image.
+COPY target/taller-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app/app.jar"]
