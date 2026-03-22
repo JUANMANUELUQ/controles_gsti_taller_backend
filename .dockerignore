@@ -4,3 +4,4 @@ target/
 .idea
 *.iml
 node_modules/
+!target/taller-0.0.1-SNAPSHOT.jar
