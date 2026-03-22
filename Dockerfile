@@ -1,8 +1,11 @@
-FROM maven:3.10.1-jdk-21 AS build
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /workspace
+# Use the Maven Wrapper to build (avoids depending on a specific 'maven:' image tag)
+COPY mvnw ./
+COPY .mvn .mvn
 COPY pom.xml ./
 COPY src ./src
-RUN mvn -B -DskipTests package
+RUN chmod +x mvnw && ./mvnw -B -DskipTests package
 
 FROM eclipse-temurin:21-jre
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser || true
