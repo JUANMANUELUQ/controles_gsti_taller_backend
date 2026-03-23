@@ -13,4 +13,6 @@ WORKDIR /app
 EXPOSE 8080
 COPY --from=build /workspace/target/*.jar app.jar
 USER appuser
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+# Ensure the JVM binds to the runtime $PORT provided by Render (fallback 8080).
+# Use a shell exec form so the java process receives signals correctly.
+ENTRYPOINT ["sh","-c","exec java -Dserver.port=$PORT -jar /app/app.jar"]
