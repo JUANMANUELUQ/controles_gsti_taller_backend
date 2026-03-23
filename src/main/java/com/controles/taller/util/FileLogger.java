@@ -1,8 +1,5 @@
 package com.controles.taller.util;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -28,14 +25,6 @@ public class FileLogger {
         // Log via SLF4J so the message is captured by platform log collectors (stdout/stderr)
         LOG.info(logCompleto);
 
-        // Also write to local file for debugging when inspecting the container filesystem
-        try (FileWriter fw = new FileWriter(LOG_PATH, true);
-             PrintWriter pw = new PrintWriter(fw)) {
-            pw.println(logCompleto);
-
-        } catch (IOException e) {
-            LOG.error("Error escribiendo log: {}", e.getMessage());
-        }
     }
 
     public static void main(String[] args) {
